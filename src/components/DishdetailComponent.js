@@ -6,6 +6,7 @@ class DishDetail extends Component {
 
 
 renderDish(dish) {
+  console.log(dish);
     if (dish != null)
     {
         return(
@@ -39,7 +40,7 @@ renderComments(selectedDish){
              <div>
              <ul className="list-unstyled">
              <li>{currentDish.comment}</li>
-             <li>--{currentDish.author},{currentDish.date}</li>
+             <li>--{currentDish.author},{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(currentDish.date)))}</li>
              </ul>
              </div>
             );
@@ -53,7 +54,7 @@ renderComments(selectedDish){
 render() {
   return (
       <div className="container">
-              {this.renderDish(this.props.selectedDish)}
+              {this.renderDish(this.props.dish)}
       </div>
   );
 }
